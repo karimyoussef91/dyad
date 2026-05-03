@@ -63,7 +63,7 @@ class DYADTorchDataset(Dataset):
         pickle.loads(self.serial_args)
         self._args = ConfigArguments.get_instance()
         self._args.configure_dlio_logging(is_child=True)
-        self.dlp_logger = self._args.configure_dlio_profiler(is_child=True, use_pid=True)
+        self.dlp_logger = self._args.configure_dftracer(is_child=True, use_pid=True) # self._args.configure_dlio_profiler(is_child=True, use_pid=True)
         logging.debug(f"{utcnow()} worker initialized {worker_id} with format {self.format_type}")
         self.reader = ReaderFactory.get_reader(type=self.format_type,
                                                dataset_type=self.dataset_type,
